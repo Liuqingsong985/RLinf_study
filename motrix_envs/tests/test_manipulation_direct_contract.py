@@ -24,6 +24,7 @@ from motrix_env_core.array.env import ArrayEnvState, NpObs
 
 _MANIPULATION_ENVS = [
     "franka-lift-cube",
+    "franka-lift-cube-rlinf",
     "shadow-hand-repose",
     "franka-open-cabinet",
     "rm65_insert_peg",
