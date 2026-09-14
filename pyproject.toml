@@ -38,7 +38,7 @@ docs = [
 # from the default index (PyPI).
 cuda = [
     "torch==2.7.0; sys_platform == 'linux' or sys_platform == 'win32'",
-    "torchvision==0.22.0; sys_platform == 'linux' or sys_platform == 'win32'",
+    "torchvision==0.29.0; sys_platform == 'linux' or sys_platform == 'win32'",
     "torchaudio==2.7.0; sys_platform == 'linux' or sys_platform == 'win32'",
 ]
 # ROCm wheels only exist for Linux x86_64; the markers keep other platforms
