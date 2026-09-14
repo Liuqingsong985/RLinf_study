@@ -37,7 +37,7 @@ docs = [
 # both branches in the single uv.lock. Without any extra, torch resolves
 # from the default index (PyPI).
 cuda = [
-    "torch==2.7.0; sys_platform == 'linux' or sys_platform == 'win32'",
+    "torch==2.14.0; sys_platform == 'linux' or sys_platform == 'win32'",
     "torchvision==0.22.0; sys_platform == 'linux' or sys_platform == 'win32'",
     "torchaudio==2.7.0; sys_platform == 'linux' or sys_platform == 'win32'",
 ]
@@ -45,7 +45,7 @@ cuda = [
 # from resolving these requirements against the default (PyPI) index.
 rocm = [
     "amdsmi; sys_platform == 'linux' and platform_machine == 'x86_64'",
-    "torch==2.11.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "torch==2.14.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
     "triton-rocm==3.6.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 
