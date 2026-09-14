@@ -1,0 +1,18 @@
+# @package _global_
+# Task franka-lift-cube-rlinf: compact SKRL PPO recipe for rollout smoke tests.
+defaults:
+  - /algo_base@algo: skrl.ppo
+  - _self_
+task:
+  env: franka-lift-cube-rlinf
+  rllib: skrl
+  algo: ppo
+  train_backend: null
+num_envs: 64
+play_num_envs: 1
+seed: 42
+algo:
+  trainer:
+    timesteps: 100000
+  agent:
+    rollouts: 24
