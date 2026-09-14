@@ -46,3 +46,14 @@ def test_rlinf_environment_step_contract():
     assert state.info["success"].shape == (2,)
     for name in ("reach", "grasp", "lift", "success"):
         assert state.info[f"reward_{name}"].shape == (2,)
+        assert state.metrics[f"reward/{name}"].shape == (2,)
+
+
+def test_reset_does_not_overwrite_terminal_rollout_diagnostics():
+    env = registry.make("franka-lift-cube-rlinf", num_envs=2)
+    env.step(np.zeros((2, 8), dtype=np.float32))
+
+    reset_info = env.reset(np.array([0], dtype=np.int64))
+
+    assert "success" not in reset_info
+    assert not any(name.startswith("reward_") for name in reset_info)

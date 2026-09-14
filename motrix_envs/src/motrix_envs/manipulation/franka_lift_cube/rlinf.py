@@ -89,15 +89,9 @@ class FrankaLiftCubeRLinfEnv(FrankaLiftCubeEnv):
         ).astype(np.float32)
         state.terminated = np.logical_or(failure, success)
         state.info["success"] = success
+        state.metrics = {}
         for name, value in terms.items():
-            state.info[f"reward_{name}"] = value.astype(np.float32)
+            diagnostic = value.astype(np.float32)
+            state.info[f"reward_{name}"] = diagnostic
+            state.metrics[f"reward/{name}"] = diagnostic
         return state
-
-    def reset(self, env_ids):
-        """Reset selected rows and initialize rollout diagnostics."""
-        info = super().reset(env_ids)
-        count = len(env_ids)
-        info["success"] = np.zeros(count, dtype=bool)
-        for name in ("reach", "grasp", "lift", "success"):
-            info[f"reward_{name}"] = np.zeros(count, dtype=np.float32)
-        return info
